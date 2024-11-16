@@ -1,0 +1,92 @@
+{
+    "project_name": "HAR",
+    "run_name": "Experiments",
+    "run_description": "None",
+    "modules": {
+        "loader": {
+            "class_": "data.load.DatasetLoader",
+            "params_": {
+                "data_path": "HAR",
+                "feature_cols": [
+                    "Mean_x",
+                    "Mean_y",
+                    "Mean_z",
+                    "Std_x",
+                    "Std_y",
+                    "Std_z",
+                    "Skewness_x",
+                    "Skewness_y",
+                    "Skewness_z",
+                    "Kurtosis_x",
+                    "Kurtosis_y",
+                    "Kurtosis_z",
+                    "Magnitude",
+                    "Energy",
+                    "Entropy_x",
+                    "Entropy_y",
+                    "Entropy_z",
+                    "Zero_Crossing_Rate_x",
+                    "Zero_Crossing_Rate_y",
+                    "Zero_Crossing_Rate_z",
+                    "Max_FFT_freq_x",
+                    "Max_FFT_freq_y", 
+                    "Max_FFT_freq_z", 
+                    "PSD_sum_x", 
+                    "PSD_sum_y", 
+                    "PSD_sum_z", 
+                    "PSD_ratio_1_x", 
+                    "PSD_ratio_3_x", 
+                    "PSD_ratio_5_x", 
+                    "PSD_ratio_10_x", 
+                    "PSD_ratio_1_y", 
+                    "PSD_ratio_3_y", 
+                    "PSD_ratio_5_y", 
+                    "PSD_ratio_10_y", 
+                    "PSD_ratio_1_z", 
+                    "PSD_ratio_3_z", 
+                    "PSD_ratio_5_z", 
+                    "PSD_ratio_10_z", 
+                    "Heart_Rate", 
+                    "Breath_Rate"
+                ],
+                "group_cols": [
+                    "User",
+                    "Activity_Number"
+                ],
+                "meta_cols": [
+                    "Window_Start",
+                    "Window_End"
+                ],
+                "target_col": "Activity",
+                "test_size": 0.20
+            }
+        },
+        "harmonizer": {
+            "class_": "features.harmonize.FeatureHarmonizer",
+            "params_": {
+                "missing_codes": null,
+                "impute_type": "knn",
+                "encoder_type": "umap",
+                "norm_type": "standard",
+                "imp_kwargs": {
+                    "n_neighbors": 3,
+                    "metric": "nan_euclidean"
+                },
+                "enc_kwargs": {
+                    "n_neighbors": 5,
+                    "min_dist": 0.1,
+                    "n_components": 2,
+                    "metric": "euclidean"
+                }
+            }
+        },
+        "trainer": {
+            "class_": "models.trainer.ModelTrainer",
+            "params_": {
+                "model_tag": "SVM_lin",
+                "norm_tag": "std",
+                "sel_tag": "RFE_comp"
+            }
+        }
+    }
+}

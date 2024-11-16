@@ -1,0 +1,36 @@
+{
+    "minmax": {
+        "_imports": "import sklearn.preprocessing",
+        "_class": "sklearn.preprocessing.MinMaxScaler",
+        "_params": {
+        "feature_range": [0, 1]
+        }
+    },
+    "maxabs": {
+        "_imports": "import sklearn.preprocessing",
+        "_class": "sklearn.preprocessing.MaxAbsScaler",
+        "_params": {}
+    },
+    "std": {
+        "_imports": "import sklearn.preprocessing",
+        "_class": "sklearn.preprocessing.StandardScaler",
+        "_params": {
+        "with_mean": 1,
+        "with_std": 1
+        }
+    },
+    "robust": {
+        "_imports": "import sklearn.preprocessing",
+        "_class": "sklearn.preprocessing.RobustScaler",
+        "_params": {
+        "with_centering": 1,
+        "with_scaling": 1,
+        "quantile_range": [25.0, 75.0]
+        }
+    },
+        "identity": {
+        "_imports": "",
+        "_class": "IdentityScaler",
+        "_params": {}
+    }
+}
